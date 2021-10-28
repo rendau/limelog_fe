@@ -1,0 +1,41 @@
+// app global css in SCSS form
+img, svg {
+  vertical-align: middle;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.b-collapse {
+  border-collapse: collapse;
+}
+
+.q-placeholder::placeholder {
+  color: #bfbfbf;
+}
+
+.q-placeholder:-ms-input-placeholder {
+  color: #bfbfbf;
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.min-width {
+  width: 1%;
+}
+
+.q-field {
+  &.q-field--float {
+    .q-field__label {
+      transform: translateY(-50%) scale(0.8) !important;
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
