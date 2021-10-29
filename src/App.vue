@@ -36,6 +36,7 @@ export default {
       try {
         await Promise.all([
           this.$store.dispatch('profile/refreshSinceAppStart'),
+          this.$store.dispatch('tag/list'),
         ])
       } catch (err) {
         console.error('app init error:', err)

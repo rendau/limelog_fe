@@ -3,5 +3,6 @@ export default function () {
     loading: 0,
     appError: null,
     wsOnline: false,
+    drawer: false,
   }
 }

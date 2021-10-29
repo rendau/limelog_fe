@@ -15,3 +15,11 @@ export function setAppError (state, value) {
 export function setWsOnline (state, value) {
   state.wsOnline = value
 }
+
+export function setDrawer (state, value) {
+  state.drawer = value
+}
+
+export function toggleDrawer (state) {
+  state.drawer = !state.drawer
+}
