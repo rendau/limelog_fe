@@ -1,9 +1,13 @@
 <template>
-  <div>
-    hello world!
+  <div class="q-pa-md">
+    <LogList/>
   </div>
 </template>
 
 <script>
-export default {}
+import LogList from 'components/log/List'
+
+export default {
+  components: { LogList },
+}
 </script>

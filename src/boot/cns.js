@@ -23,6 +23,8 @@ const cns = {
   SfTagFieldName: 'sf_tag',
   SfMessageFieldName: 'sf_message',
   MessageFieldName: 'message',
+
+  DefaultPageSize: 20,
 }
 
 if (process.env.API_URL) {

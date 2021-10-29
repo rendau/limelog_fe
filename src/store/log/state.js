@@ -1,3 +1,5 @@
+import { cns } from 'boot/cns'
+
 export default function () {
   return {
     loading: false,
@@ -7,7 +9,7 @@ export default function () {
     },
     params: {
       page: 0,
-      page_size: 30,
+      page_size: cns.DefaultPageSize,
     },
     filter: {},
     reload: false,

@@ -16,7 +16,7 @@ export function setPage (state, v) {
 }
 
 export function setPageSize (state, v) {
-  state.params.page_size = v || 30
+  state.params.page_size = v
 }
 
 export function setFilter (state, v) {
