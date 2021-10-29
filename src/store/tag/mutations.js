@@ -3,7 +3,7 @@ export function setLoading (state, v) {
 }
 
 export function setData (state, v) {
-  state.data = v
+  state.data = v || []
 }
 
 export function setSelected (state, v) {

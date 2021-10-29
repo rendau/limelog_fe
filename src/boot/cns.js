@@ -17,6 +17,12 @@ const cns = {
 
   indexRouteName: 'index',
   authRouteName: 'auth',
+
+  SystemFieldPrefix: 'sf_',
+  SfTsFieldName: 'sf_ts',
+  SfTagFieldName: 'sf_tag',
+  SfMessageFieldName: 'sf_message',
+  MessageFieldName: 'message',
 }
 
 if (process.env.API_URL) {

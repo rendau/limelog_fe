@@ -43,9 +43,19 @@ export default {
         this.$store.commit('app/setAppError', this.$t('failed_access_server'))
       }
 
+      this.startJobs()
+
       this.$store.commit('app/removeLoading')
 
       return this.$store.dispatch('app/resolveAppStartPr')
+    },
+    startJobs () {
+      this.jobRefreshTags()
+    },
+    jobRefreshTags () {
+      setTimeout(() => {
+        this.$store.dispatch('tag/list').finally(() => this.jobRefreshTags())
+      }, 10000)
     },
   },
   created () {

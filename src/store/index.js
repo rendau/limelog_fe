@@ -6,6 +6,7 @@ import config from './config'
 import app from './app'
 import profile from './profile'
 import tag from './tag'
+import log from './log'
 
 Vue.use(Vuex)
 
@@ -26,6 +27,7 @@ export default function (/* { ssrContext } */) {
       app,
       profile,
       tag,
+      log,
     },
 
     // enable strict mode (adds overhead!)
