@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import moment from 'moment'
 import { Notify, scroll } from 'quasar'
 import { cns } from 'boot/cns'
 
@@ -36,7 +37,6 @@ export function list (ctx, pars) {
     filter_obj[cns.SfTagFieldName] = ctx.rootState.tag.selected
   }
   // ts
-
   if (ctx.state.ts_gte || ctx.state.ts_lte) {
     filter_obj[cns.SfTsFieldName] = _.omitBy({
       '$gte': ctx.state.ts_gte,
@@ -80,17 +80,22 @@ export function changeSearch (ctx, v) {
 }
 
 export function changeTsGte (ctx, v) {
-  ctx.commit('log/setTsGte', v)
+  ctx.commit('setTsGte', v)
   ctx.dispatch('list', { restart: true })
 }
 
 export function changeTsLte (ctx, v) {
-  ctx.commit('log/setTsLte', v)
+  ctx.commit('setTsLte', v)
   ctx.dispatch('list', { restart: true })
 }
 
-export function changePeriod (ctx, { tsGte, tsLte }) {
-  ctx.commit('log/setTsGte', tsGte)
-  ctx.commit('log/setTsLte', tsLte)
+export function changePeriod (ctx, { ts_gte, ts_lte }) {
+  ctx.commit('setTsGte', ts_gte)
+  ctx.commit('setTsLte', ts_lte)
   ctx.dispatch('list', { restart: true })
+}
+
+export function changePeriodType (ctx, v) {
+  ctx.commit('setPeriodType', v)
+  ctx.dispatch('changePeriod', v)
 }

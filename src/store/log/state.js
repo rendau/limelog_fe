@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { cns } from 'boot/cns'
 
 export default function () {
@@ -13,7 +14,7 @@ export default function () {
     },
     level: undefined,
     search: '',
-    period_type: null,
+    period_type: _.head(cns.PeriodTypes),
     ts_gte: null,
     ts_lte: null,
     reload: false,

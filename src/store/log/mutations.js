@@ -28,9 +28,13 @@ export function setSearch (state, v) {
 }
 
 export function setTsGte (state, v) {
-  state.ts_gte = v || ''
+  state.ts_gte = v
 }
 
 export function setTsLte (state, v) {
-  state.ts_lte = v || ''
+  state.ts_lte = v
+}
+
+export function setPeriodType (state, v) {
+  state.period_type = v
 }
