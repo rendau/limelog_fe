@@ -3,7 +3,7 @@
                 :max="pageMax"
                 :max-pages="5"
                 :direction-links="true"
-                size=".9rem"
+                size="1rem"
                 color="primary"
                 @input="onInput"/>
 </template>

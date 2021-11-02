@@ -23,6 +23,7 @@ const cns = {
   SfTagFieldName: 'sf_tag',
   SfMessageFieldName: 'sf_message',
   MessageFieldName: 'message',
+  LevelFieldName: 'level',
 
   DefaultPageSize: 20,
 }

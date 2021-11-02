@@ -9,7 +9,7 @@ export function list (ctx, pars) {
     ctx.commit('setPage', 0)
   }
   if (pars?.reset) {
-    ctx.commit('setFilter', {})
+    ctx.commit('setSearch', '')
   }
   if (ctx.state.loading) {
     ctx.commit('setReload', true)
@@ -18,9 +18,30 @@ export function list (ctx, pars) {
   console.log('fetch logs')
   ctx.commit('setLoading', true)
   let params = ctx.state.params
-  let filter_obj = _.assign({}, ctx.state.filter)
+  let filter_obj = {}
+  // search
+  if (ctx.state.search) {
+    try {
+      _.assign(filter_obj, JSON.parse(ctx.state.search) || {})
+    } catch (e) {
+      filter_obj[cns.MessageFieldName] = { '$regex': ctx.state.search, '$options': 'i' }
+    }
+  }
+  // level
+  if (ctx.state.level !== undefined) {
+    filter_obj[cns.LevelFieldName] = ctx.state.level
+  }
+  // tag
   if (ctx.rootState.tag.selected) {
     filter_obj[cns.SfTagFieldName] = ctx.rootState.tag.selected
+  }
+  // ts
+
+  if (ctx.state.ts_gte || ctx.state.ts_lte) {
+    filter_obj[cns.SfTsFieldName] = _.omitBy({
+      '$gte': ctx.state.ts_gte,
+      '$lte': ctx.state.ts_lte,
+    }, _.isNil)
   }
   return this.$axios.post('log/list', { filter_obj }, { params }).then(({ data }) => {
     ctx.commit('setData', data)
@@ -48,11 +69,28 @@ export function changePageSize (ctx, v) {
   ctx.dispatch('list')
 }
 
-export function changeFilter (ctx, { value, replace }) {
-  if (replace) {
-    ctx.commit('setFilter', value || {})
-  } else {
-    ctx.commit('setFilter', _.assign({}, ctx.state.filter, value))
-  }
-  ctx.dispatch('list')
+export function changeLevel (ctx, v) {
+  ctx.commit('setLevel', v)
+  ctx.dispatch('list', { restart: true })
+}
+
+export function changeSearch (ctx, v) {
+  ctx.commit('setSearch', v)
+  ctx.dispatch('list', { restart: true })
+}
+
+export function changeTsGte (ctx, v) {
+  ctx.commit('log/setTsGte', v)
+  ctx.dispatch('list', { restart: true })
+}
+
+export function changeTsLte (ctx, v) {
+  ctx.commit('log/setTsLte', v)
+  ctx.dispatch('list', { restart: true })
+}
+
+export function changePeriod (ctx, { tsGte, tsLte }) {
+  ctx.commit('log/setTsGte', tsGte)
+  ctx.commit('log/setTsLte', tsLte)
+  ctx.dispatch('list', { restart: true })
 }

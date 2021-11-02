@@ -11,7 +11,11 @@ export default function () {
       page: 0,
       page_size: cns.DefaultPageSize,
     },
-    filter: {},
+    level: undefined,
+    search: '',
+    period_type: null,
+    ts_gte: null,
+    ts_lte: null,
     reload: false,
   }
 }
