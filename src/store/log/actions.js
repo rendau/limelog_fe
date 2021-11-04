@@ -1,15 +1,17 @@
 import _ from 'lodash'
-import moment from 'moment'
 import { Notify, scroll } from 'quasar'
 import { cns } from 'boot/cns'
 
 const { setScrollPosition } = scroll
 
-export function list (ctx, pars) {
-  if (pars?.restart) {
+let arTimeoutId = null
+
+export function list (ctx, pars = {}) {
+  clearTimeout(arTimeoutId)
+  if (pars.restart) {
     ctx.commit('setPage', 0)
   }
-  if (pars?.reset) {
+  if (pars.reset) {
     ctx.commit('setSearch', '')
   }
   if (ctx.state.loading) {
@@ -49,12 +51,18 @@ export function list (ctx, pars) {
     Notify.create({ type: 'negative', message: err.data.desc })
     ctx.commit('setData', null)
   }).finally(() => {
+    clearTimeout(arTimeoutId)
     ctx.commit('setLoading', false)
     if (ctx.state.reload) {
       ctx.commit('setReload', false)
       ctx.dispatch('list')
     } else {
-      setScrollPosition(window, 0, 150)
+      if (ctx.state.ar_dur) {
+        arTimeoutId = setTimeout(() => ctx.dispatch('list', { no_scroll: true }), ctx.state.ar_dur)
+      }
+      if (!pars.no_scroll) {
+        setScrollPosition(window, 0, 150)
+      }
     }
   })
 }
@@ -98,4 +106,12 @@ export function changePeriod (ctx, { ts_gte, ts_lte }) {
 export function changePeriodType (ctx, v) {
   ctx.commit('setPeriodType', v)
   ctx.dispatch('changePeriod', v)
+}
+
+export function changeArDur (ctx, v) {
+  ctx.commit('setArDur', v)
+  clearTimeout(arTimeoutId)
+  if (v) {
+    arTimeoutId = setTimeout(() => ctx.dispatch('list', { no_scroll: true }), v)
+  }
 }

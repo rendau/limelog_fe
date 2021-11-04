@@ -38,3 +38,7 @@ export function setTsLte (state, v) {
 export function setPeriodType (state, v) {
   state.period_type = v
 }
+
+export function setArDur (state, v) {
+  state.ar_dur = v
+}

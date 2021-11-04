@@ -20,5 +20,6 @@ export default function () {
     ts_gte: periodType?.ts_gte || null,
     ts_lte: periodType?.ts_lte || null,
     reload: false,
+    ar_dur: 10000, // auto-refresh duration milliseconds
   }
 }

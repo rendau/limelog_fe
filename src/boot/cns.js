@@ -40,6 +40,15 @@ const cns = {
     { ts_gte: moment().add(-1, 'month').valueOf(), ts_lte: null, label: '1 month' },
     { ts_gte: moment().add(-3, 'month').valueOf(), ts_lte: null, label: '3 month' },
   ],
+
+  RefreshRates: [
+    { value: null, label: 'Not refresh' },
+    { value: 2000, label: '2 seconds' },
+    { value: 5000, label: '5 seconds' },
+    { value: 10000, label: '10 seconds' },
+    { value: 30000, label: '30 seconds' },
+    { value: 60000, label: '1 minute' },
+  ],
 }
 
 if (process.env.API_URL) {
