@@ -8,7 +8,7 @@
                @click="onDrawerInput(false)"/>
       </div>
 
-      <div class="col full-width">
+      <div class="col full-width q-py-md">
         <div class="fit row items-center q-px-sm">
           <div class="full-width">
             <div v-for="(v, k) in msg" :key="`field-${k}`" class="full-width">
