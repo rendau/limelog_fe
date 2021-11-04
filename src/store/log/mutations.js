@@ -7,6 +7,13 @@ export function setData (state, v) {
   state.data.results = v?.results || []
 }
 
+export function setSelectedMsg (state, v) {
+  if (v === state.selectedMsg) {
+    v = null
+  }
+  state.selectedMsg = v
+}
+
 export function setReload (state, v) {
   state.reload = !!v
 }

@@ -1,7 +1,11 @@
 <template>
-  <tr class="cursor-pointer">
+  <tr class="cursor-pointer" :class="{'bg-lime-2': active}">
     <td class="text-no-wrap">
       {{ $u.fmtDatetimeMini(data[$cns.SfTsFieldName]) }}
+    </td>
+
+    <td class="text-no-wrap text-center">
+      {{ data[$cns.SfTagFieldName] }}
     </td>
 
     <td class="text-no-wrap text-center">
@@ -24,6 +28,9 @@ export default {
     data: {
       type: Object,
       required: true,
+    },
+    active: {
+      type: Boolean,
     },
   },
   computed: {

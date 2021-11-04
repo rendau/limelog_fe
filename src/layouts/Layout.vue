@@ -1,8 +1,10 @@
 <template>
-  <q-layout view="hHh Lpr lFf">
+  <q-layout view="hHh LpR lFf">
     <Header/>
 
     <Drawer/>
+
+    <RDrawer/>
 
     <q-page-container>
       <q-page>
@@ -15,8 +17,9 @@
 <script>
 import Header from 'layouts/Header'
 import Drawer from 'layouts/Drawer'
+import RDrawer from 'layouts/RDrawer'
 
 export default {
-  components: { Drawer, Header },
+  components: { Header, Drawer, RDrawer },
 }
 </script>

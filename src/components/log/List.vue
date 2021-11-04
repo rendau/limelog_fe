@@ -25,8 +25,10 @@
 
     <q-markup-table wrap-cells class="relative-position">
       <thead class="dense">
-      <tr class="bg-grey-2">
+      <tr class="bg-grey-2 text-lime-9">
         <th class="min-width">Time</th>
+
+        <th class="min-width">Tag</th>
 
         <th class="min-width">Level</th>
 
@@ -35,7 +37,9 @@
       </thead>
 
       <tbody>
-      <ListItem v-for="item in results" :key="`item-${item._id}`" :data="item"/>
+      <ListItem v-for="item in results" :key="`item-${item._id}`" :data="item"
+                :active="item._id === ($store.state.log.selectedMsg || {})._id"
+                @click.native="$store.commit('log/setSelectedMsg', item)"/>
 
       <ac-tr-no-rows v-if="!loading && !results.length"/>
       </tbody>

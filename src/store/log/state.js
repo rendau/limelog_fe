@@ -10,6 +10,7 @@ export default function () {
       total_count: 0,
       results: [],
     },
+    selectedMsg: null,
     params: {
       page: 0,
       page_size: cns.DefaultPageSize,
