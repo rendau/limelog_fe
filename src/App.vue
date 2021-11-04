@@ -22,6 +22,11 @@
 
 <script>
 export default {
+  computed: {
+    authed () {
+      return this.$store.getters['profile/isAuthed']
+    },
+  },
   methods: {
     async start () {
       console.log('App created')
@@ -36,7 +41,6 @@ export default {
       try {
         await Promise.all([
           this.$store.dispatch('profile/refreshSinceAppStart'),
-          this.$store.dispatch('tag/list'),
         ])
       } catch (err) {
         console.error('app init error:', err)
@@ -52,10 +56,11 @@ export default {
     startJobs () {
       this.jobRefreshTags()
     },
-    jobRefreshTags () {
-      setTimeout(() => {
-        this.$store.dispatch('tag/list').finally(() => this.jobRefreshTags())
-      }, 10000)
+    async jobRefreshTags () {
+      if (this.authed) {
+        await this.$store.dispatch('tag/list').catch(() => {})
+      }
+      setTimeout(() => this.jobRefreshTags(), 10000)
     },
   },
   created () {

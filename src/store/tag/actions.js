@@ -15,7 +15,6 @@ export function list (ctx) {
 }
 
 export function select (ctx, v) {
-  // if (v === ctx.selected) return
   ctx.commit('setSelected', v)
   ctx.dispatch('log/list', { restart: true, reset: true }, { root: true })
 }

@@ -60,6 +60,7 @@ export function set ({ state, commit, dispatch }, value) {
   if (vChanged) {
     if (value) {
       ws.connect()
+      dispatch('tag/list', null, { root: true })
     }
   }
 
