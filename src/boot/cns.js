@@ -2,7 +2,7 @@ import moment from 'moment'
 
 const cns = {
   AppName: 'LimeLog',
-  ApiUrl: 'https://api.zeon.mechta.market/ll',
+  ApiUrl: 'https://api.zeon.mechta.market/limelog',
   WsUrl: '-',
 
   LocaleRu: 'ru-ru',
