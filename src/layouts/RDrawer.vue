@@ -8,15 +8,15 @@
                @click="onDrawerInput(false)"/>
       </div>
 
-      <div class="col">
+      <div class="col full-width">
         <div class="fit row items-center q-px-sm">
-          <div>
-            <div v-for="(v, k) in msg" :key="`field-${k}`">
+          <div class="full-width">
+            <div v-for="(v, k) in msg" :key="`field-${k}`" class="full-width">
               <div class="text-subtitle2 lh-1_1 text-lime-9 q-pb-xs">
                 {{ k }}:
               </div>
 
-              <div class="text-body2 lh-1_3 q-pl-md q-pb-md">
+              <div class="text-body2 lh-1_3 q-pl-md q-pb-md" style="word-wrap: break-word">
                 {{ v }}
               </div>
             </div>
@@ -37,7 +37,15 @@ export default {
     },
     msg () {
       if (!this.selectedMsg) return null
-      let res = _.omit(this.selectedMsg, [this.$cns.SfMessageFieldName])
+      let res = _.omit(this.selectedMsg, [
+        this.$cns.SfMessageFieldName,
+        'sf_created',
+        'sf_image_id',
+        'sf_image_name',
+        'sf_container_name',
+        'sf_command',
+        'msg',
+      ])
       if (res[this.$cns.SfTsFieldName]) {
         res[this.$cns.SfTsFieldName] = this.$u.fmtDatetimeSimple(res[this.$cns.SfTsFieldName])
       }
