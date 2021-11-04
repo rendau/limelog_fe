@@ -1,6 +1,6 @@
 <template>
   <q-header bordered class="q-py-none bg-grey-2 text-black">
-    <q-toolbar class="q-py-none" style="min-height: 50px">
+    <q-toolbar class="q-py-xs" style="min-height: 50px">
       <div class="col">
         <div class="row items-center q-gutter-x-md">
           <div>

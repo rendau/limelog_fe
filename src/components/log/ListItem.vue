@@ -1,6 +1,6 @@
 <template>
   <tr class="cursor-pointer" :class="{'bg-lime-2': active}">
-    <td class="text-no-wrap">
+    <td class="text-center" :class="{'text-no-wrap': $q.screen.gt.xs}">
       {{ $u.fmtDatetimeMini(data[$cns.SfTsFieldName]) }}
     </td>
 

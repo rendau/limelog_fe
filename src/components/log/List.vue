@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row items-center q-gutter-x-lg">
+    <div class="row items-center q-gutter-y-sm q-gutter-x-lg">
       <div class="col-auto">
         <q-btn-toggle no-caps rounded
                       :value="level" toggle-color="primary"
@@ -23,7 +23,7 @@
 
     <div class="q-pt-md"/>
 
-    <q-markup-table wrap-cells class="relative-position">
+    <q-markup-table wrap-cells :dense="$q.screen.lt.sm" class="relative-position">
       <thead class="dense">
       <tr class="bg-grey-2 text-lime-9">
         <th class="min-width">Time</th>

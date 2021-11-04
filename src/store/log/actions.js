@@ -8,6 +8,9 @@ let arTimeoutId = null
 
 export function list (ctx, pars = {}) {
   clearTimeout(arTimeoutId)
+  if (!ctx.rootState.profile.ctx) {
+    return
+  }
   if (pars.restart) {
     ctx.commit('setPage', 0)
   }
@@ -57,7 +60,7 @@ export function list (ctx, pars = {}) {
       ctx.commit('setReload', false)
       ctx.dispatch('list')
     } else {
-      if (ctx.state.ar_dur) {
+      if (ctx.state.ar_dur && ctx.rootState.profile.ctx) {
         arTimeoutId = setTimeout(() => ctx.dispatch('list', { no_scroll: true }), ctx.state.ar_dur)
       }
       if (!pars.no_scroll) {
