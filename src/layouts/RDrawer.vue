@@ -1,6 +1,6 @@
 <template>
   <q-drawer :value="!!msg" elevated side="right"
-            content-class="bg-grey-1" :width="300"
+            content-class="bg-grey-1" :width="350"
             @input="onDrawerInput">
     <div class="fit column items-stretch">
       <div class="col-auto q-pa-xs">
@@ -8,16 +8,20 @@
                @click="onDrawerInput(false)"/>
       </div>
 
-      <div class="col full-width q-py-md">
-        <div class="fit row items-center q-px-sm">
-          <div class="full-width">
-            <div v-for="(v, k) in msg" :key="`field-${k}`" class="full-width">
-              <div class="text-subtitle2 lh-1_1 text-lime-9 q-pb-xs">
-                {{ k }}:
-              </div>
+      <div class="col fit">
+        <div class="fit overflow-auto">
+          <div class="full-width row items-center q-pt-md q-px-sm q-pb-md" style="min-height: 100%">
+            <div class="full-width">
+              <div class="column items-stretch q-gutter-y-md">
+                <div v-for="(v, k) in msg" :key="`field-${k}`" class="full-width">
+                  <div class="text-subtitle2 lh-1_1 text-lime-9 q-pb-xs">
+                    {{ k }}:
+                  </div>
 
-              <div class="text-body2 lh-1_3 q-pl-md q-pb-md" style="word-wrap: break-word">
-                {{ v }}
+                  <div class="text-body2 lh-1_3 q-pl-md" style="word-wrap: break-word">
+                    {{ v }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

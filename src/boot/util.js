@@ -24,7 +24,7 @@ let util = {
   },
   fmtDatetimeSimple (v) {
     if (!v) return ''
-    return moment(v).format('DD.MM.YYYY LT')
+    return moment(v).format('DD MMMM LTS')
   },
   fmtDatetimeMini (v) {
     if (!v) return ''
