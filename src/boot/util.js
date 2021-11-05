@@ -109,6 +109,21 @@ let util = {
     }
     return cns.ApiUrl + path + '?' + _.join(_.map(_.toPairs(_.omitBy(pars, _.isNil)), x => `${x[0]}=${x[1]}`), '&')
   },
+
+  levelColor (v) {
+    switch (v) {
+      case 'debug':
+        return 'grey-5'
+      case 'warn':
+        return 'orange'
+      case 'error':
+        return 'red'
+      case 'fatal':
+        return 'purple'
+      default:
+        return null
+    }
+  }
 }
 
 export default ({ Vue, store, router }) => {

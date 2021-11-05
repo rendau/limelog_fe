@@ -9,10 +9,7 @@
     </td>
 
     <td class="text-no-wrap text-center">
-      <q-badge :color="levelColor || 'transparent'"
-               :text-color="levelColor ? undefined : 'black'">
-        {{ data[$cns.LevelFieldName] }}
-      </q-badge>
+      <ac-level-badge :data="data"/>
     </td>
 
     <td>
@@ -31,22 +28,6 @@ export default {
     },
     active: {
       type: Boolean,
-    },
-  },
-  computed: {
-    levelColor () {
-      switch (this.data[this.$cns.LevelFieldName]) {
-        case 'debug':
-          return 'grey-5'
-        case 'warn':
-          return 'orange'
-        case 'error':
-          return 'red'
-        case 'fatal':
-          return 'purple'
-        default:
-          return null
-      }
     },
   },
 }

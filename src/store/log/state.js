@@ -11,6 +11,7 @@ export default function () {
       results: [],
     },
     selectedMsg: null,
+    selectedMsgExpanded: false,
     params: {
       page: 0,
       page_size: cns.DefaultPageSize,

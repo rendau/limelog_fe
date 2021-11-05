@@ -14,6 +14,14 @@ export function setSelectedMsg (state, v) {
   state.selectedMsg = v
 }
 
+export function setSelectedMsgExpanded (state, v) {
+  state.selectedMsgExpanded = v
+}
+
+export function toggleSelectedMsgExpanded (state) {
+  state.selectedMsgExpanded = !state.selectedMsgExpanded
+}
+
 export function setReload (state, v) {
   state.reload = !!v
 }

@@ -6,6 +6,7 @@ import TableTotalCounter from './TableTotalCounter.vue'
 import TrNoRows from './TrNoRows'
 import InputPeriod from './InputPeriod'
 import InputDate from './InputDate'
+import LevelBadge from './LevelBadge'
 
 export function register (Vue) {
   Vue.component('ac-spn', Spn)
@@ -16,4 +17,5 @@ export function register (Vue) {
   Vue.component('ac-table-total-counter', TableTotalCounter)
   Vue.component('ac-tr-no-rows', TrNoRows)
   Vue.component('ac-input-period', InputPeriod)
+  Vue.component('ac-level-badge', LevelBadge)
 }

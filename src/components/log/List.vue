@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row items-center q-gutter-y-sm q-gutter-x-lg">
+    <div :class="$q.screen.lt.sm ? 'column q-gutter-y-sm' : 'row q-gutter-x-lg'" class="items-center">
       <div class="col-auto">
         <q-btn-toggle no-caps rounded
                       :value="level" toggle-color="primary"
@@ -8,7 +8,7 @@
                       @input="onLevelInput"/>
       </div>
 
-      <div class="col">
+      <div class="col-auto">
         <q-input dense outlined clearable
                  placeholder="search"
                  :value="search"

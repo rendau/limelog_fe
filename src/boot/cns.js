@@ -21,6 +21,7 @@ const cns = {
   authRouteName: 'auth',
 
   SystemFieldPrefix: 'sf_',
+  IdFieldName: '_id',
   SfTsFieldName: 'sf_ts',
   SfTagFieldName: 'sf_tag',
   SfMessageFieldName: 'sf_message',
