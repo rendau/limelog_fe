@@ -6,7 +6,7 @@
   "author": "mdb <dauren.asir@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "quasar dev -m spa -p 8080",
+    "dev": "quasar dev -m spa -p 8081",
     "build": "quasar build -m spa",
     "test": "echo \"No test specified\" && exit 0"
   },
