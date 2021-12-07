@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 confpath=/www/site/config.js
 
@@ -8,3 +8,5 @@ touch ${confpath}
 
 # Add assignment
 echo "API_URL = '$API_URL';" >> ${confpath}
+
+nginx -g daemon off
