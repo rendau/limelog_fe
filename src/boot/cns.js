@@ -2,7 +2,7 @@ import moment from 'moment'
 
 const cns = {
   AppName: 'LimeLog',
-  ApiUrl: 'https://api.zeon.mechta.market/limelog',
+  ApiUrl: '-',
   WsUrl: '-',
 
   LocaleRu: 'ru-ru',
@@ -51,6 +51,9 @@ const cns = {
     { value: 60000, label: '1 minute' },
   ],
 }
+
+cns.ApiUrl = window.API_URL || cns.ApiUrl
+cns.WsUrl = window.WS_URL || cns.WsUrl
 
 if (process.env.API_URL) {
   cns.ApiUrl = process.env.API_URL
