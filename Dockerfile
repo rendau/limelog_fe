@@ -9,4 +9,4 @@ COPY --chown=nginx:nginx dist/spa /www/site
 COPY env_to_config.sh /
 RUN chmod +x /env_to_config.sh
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "/env_to_config.sh", "&&", "nginx", "-g", "daemon off;"]
