@@ -6,6 +6,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY --chown=nginx:nginx dist/spa /www/site
 
-COPY env_to_config.sh /
+COPY env_to_config.sh /env_to_config.sh
 
 CMD ["sh", "-c", "/env_to_config.sh", ";", "nginx", "-g", "daemon off;"]
