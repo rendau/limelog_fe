@@ -1,4 +1,4 @@
-function InitLimelog (opt) {
+(function () {
   /*
     {
       url: 'http://limelog/api',
@@ -6,7 +6,14 @@ function InitLimelog (opt) {
     }
    */
 
+  let opt = window.LimeLogConfig || {}
+
   let ctx = {
+    originConsole: {
+      warn: console.warn,
+      error: console.error,
+    },
+
     opt: opt || {},
     getXHR () {
       if (typeof XMLHttpRequest !== 'undefined') {
@@ -52,13 +59,6 @@ function InitLimelog (opt) {
     },
   }
 
-  let originConsole = {
-    log: console.log,
-    info: console.info,
-    warn: console.warn,
-    error: console.error,
-  }
-
   console.error = function () {
     let args = Array.prototype.slice.call(arguments)
     let data = {
@@ -70,7 +70,7 @@ function InitLimelog (opt) {
       }
     })
     ctx.sendLog('error', data)
-    originConsole.error.apply(console, arguments)
+    ctx.originConsole.error.apply(console, arguments)
   }
 
   console.warn = function () {
@@ -78,7 +78,7 @@ function InitLimelog (opt) {
     ctx.sendLog('warn', {
       message: args.join(' '),
     })
-    originConsole.warn.apply(console, arguments)
+    ctx.originConsole.warn.apply(console, arguments)
   }
 
   window.onerror = function (msg, url, lineNo, columnNo, error) {
@@ -94,4 +94,4 @@ function InitLimelog (opt) {
 
     return false
   }
-}
+})()
