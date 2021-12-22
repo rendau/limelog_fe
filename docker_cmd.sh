@@ -7,6 +7,6 @@ rm -rf ${confpath}
 touch ${confpath}
 
 # Add assignment
-echo "API_URL = '$API_URL';" >> ${confpath}
+echo "window.API_URL = '$API_URL';" >> ${confpath}
 
 nginx -g 'daemon off;'
