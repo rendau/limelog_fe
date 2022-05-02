@@ -29,6 +29,14 @@
             <RefreshRateSelector/>
           </div>
 
+          <q-separator vertical/>
+
+          <div>
+            <q-btn flat dense round color="primary" @click="onSettingsClick">
+              <q-icon name="settings" size="1.2rem"/>
+            </q-btn>
+          </div>
+
           <div v-if="$store.getters['profile/isAuthed']">
             <q-btn flat dense round color="primary" @click="onLogoutClick">
               <q-icon name="logout" size="1.2rem"/>
@@ -43,10 +51,17 @@
 <script>
 import PeriodFilter from 'components/log/PeriodFilter'
 import RefreshRateSelector from 'components/log/RefreshRateSelector'
+import DEdit from 'components/config/DEdit'
 
 export default {
   components: { RefreshRateSelector, PeriodFilter },
   methods: {
+    onSettingsClick () {
+      this.$q.dialog({
+        component: DEdit,
+        parent: this,
+      })
+    },
     onLogoutClick () {
       this.$q.dialog({
         message: 'Вы действительно хотите выйти?',

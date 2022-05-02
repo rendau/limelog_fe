@@ -8,7 +8,7 @@ export function setData (state, v) {
 }
 
 export function setSelectedMsg (state, v) {
-  if (v === state.selectedMsg) {
+  if (state.selectedMsg && v?.id === state.selectedMsg.id) {
     v = null
   }
   state.selectedMsg = v

@@ -40,6 +40,7 @@ export default {
 
       try {
         await Promise.all([
+          this.$store.dispatch('config/get'),
           this.$store.dispatch('profile/refreshSinceAppStart'),
         ])
       } catch (err) {

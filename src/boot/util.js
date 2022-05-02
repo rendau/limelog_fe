@@ -83,13 +83,13 @@ let util = {
       bar: {
         width: '8px',
         'border-radius': '4px',
-        'background-color': '#e5e4d8',
+        'background-color': '#e5e4df',
         opacity: 1,
       },
       thumb: {
         width: '8px',
         'border-radius': '4px',
-        'background-color': '#a76301',
+        'background-color': '#a6a6a6',
         opacity: 1,
       },
     }
