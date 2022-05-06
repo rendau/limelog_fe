@@ -1,3 +1,5 @@
+import { cns } from 'boot/cns'
+
 export function setLoading (state, v) {
   state.loading = v
 }
@@ -8,7 +10,7 @@ export function setData (state, v) {
 }
 
 export function setSelectedMsg (state, v) {
-  if (state.selectedMsg && v?.id === state.selectedMsg.id) {
+  if (state.selectedMsg && (v || {})[cns.IdFieldName] === state.selectedMsg[cns.IdFieldName]) {
     v = null
   }
   state.selectedMsg = v
