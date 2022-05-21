@@ -12,7 +12,7 @@
         <q-input dense outlined clearable
                  placeholder="search"
                  :value="search"
-                 :debounce="600"
+                 :debounce="1400"
                  style="width: 340px"
                  @input="onSearchInput">
           <template #append>

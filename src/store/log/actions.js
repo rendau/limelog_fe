@@ -27,11 +27,12 @@ export function list (ctx, pars = {}) {
   let filter_obj = {}
   // search
   if (ctx.state.search) {
-    // try {
-    //   _.assign(filter_obj, JSON.parse(ctx.state.search) || {})
-    // } catch (e) {
-    filter_obj[cns.SfMessageFieldName] = { '$regex': ctx.state.search, '$options': 'i' }
-    // }
+    let conds = _.map(_.reject(_.split(ctx.state.search, ' && '), x => !x), x => {
+      return { [cns.SfMessageFieldName]: { '$regex': x, '$options': 'i' } }
+    })
+    if (conds.length > 0) {
+      filter_obj['$and'] = conds
+    }
   }
   // level
   if (ctx.state.level !== undefined) {
