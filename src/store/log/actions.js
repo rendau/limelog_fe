@@ -27,11 +27,11 @@ export function list (ctx, pars = {}) {
   let filter_obj = {}
   // search
   if (ctx.state.search) {
-    try {
-      _.assign(filter_obj, JSON.parse(ctx.state.search) || {})
-    } catch (e) {
-      filter_obj[cns.MessageFieldName] = { '$regex': ctx.state.search, '$options': 'i' }
-    }
+    // try {
+    //   _.assign(filter_obj, JSON.parse(ctx.state.search) || {})
+    // } catch (e) {
+    filter_obj[cns.SfMessageFieldName] = { '$regex': ctx.state.search, '$options': 'i' }
+    // }
   }
   // level
   if (ctx.state.level !== undefined) {

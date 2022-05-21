@@ -13,6 +13,7 @@
                  placeholder="search"
                  :value="search"
                  :debounce="600"
+                 style="width: 340px"
                  @input="onSearchInput">
           <template #append>
             <q-icon name="search" size=".9rem" color="grey-5"/>
