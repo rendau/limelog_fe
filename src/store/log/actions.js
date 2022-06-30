@@ -23,7 +23,6 @@ export function list (ctx, pars = {}) {
   }
   console.log('fetch logs')
   ctx.commit('setLoading', true)
-  let params = ctx.state.params
   let filter_obj = {}
   // search
   if (ctx.state.search) {
@@ -49,7 +48,8 @@ export function list (ctx, pars = {}) {
       '$lte': ctx.state.ts_lte,
     }, _.isNil)
   }
-  return this.$axios.post('log/list', { filter_obj }, { params }).then(({ data }) => {
+  let data = _.assign({}, ctx.state.params, { filter_obj })
+  return this.$axios.post('log/list', data).then(({ data }) => {
     ctx.commit('setData', data)
   }, err => {
     Notify.create({ type: 'negative', message: err.data.desc })
