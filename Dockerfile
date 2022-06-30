@@ -9,4 +9,6 @@ COPY --chown=nginx:nginx dist/spa /www/site
 COPY docker_cmd.sh /
 RUN chmod +x /docker_cmd.sh
 
+HEALTHCHECK --start-period=3s --interval=5s --timeout=2s --retries=2 CMD curl -f http://localhost || false
+
 CMD ["/docker_cmd.sh"]
