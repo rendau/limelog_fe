@@ -8,8 +8,8 @@ let arTimeoutId = null
 
 export function list (ctx, pars = {}) {
   clearTimeout(arTimeoutId)
-  if (!ctx.state.ts_lte) {
-    ctx.commit('setArDur', _.find(cns.RefreshRates, x => _.isNil(x.value)) || null)
+  if (ctx.state.ts_lte) {
+    ctx.commit('setArDur', null)
   }
   if (!ctx.rootState.profile.ctx) {
     return
@@ -30,7 +30,7 @@ export function list (ctx, pars = {}) {
   // search
   if (ctx.state.search) {
     let conds = _.map(_.reject(_.split(ctx.state.search, ' && '), x => !x), x => {
-      return { [cns.SfMessageFieldName]: { '$regex': _.replace(x, '"', '\\\"'), '$options': 'i' } }
+      return { [cns.SfMessageFieldName]: { '$regex': _.replace(x, /"/g, '\\\\\"'), '$options': 'i' } }
     })
     if (conds.length > 0) {
       filter_obj['$and'] = conds
@@ -114,6 +114,9 @@ export function changePeriod (ctx, { ts_gte, ts_lte }) {
 
 export function changePeriodType (ctx, v) {
   ctx.commit('setPeriodType', v)
+  if (v) {
+    ctx.commit('setArDur', cns.DefaultArDur)
+  }
   ctx.dispatch('changePeriod', v)
 }
 

@@ -101,6 +101,8 @@ export default {
         console.log(time)
 
         value = moment(this.date + ' ' + time, 'YYYY-MM-DD HH:mm').valueOf()
+      } else {
+        this.time = null
       }
 
       this.$emit('input', value)

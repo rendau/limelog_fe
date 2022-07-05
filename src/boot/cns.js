@@ -29,6 +29,7 @@ const cns = {
   LevelFieldName: 'level',
 
   DefaultPageSize: 20,
+  DefaultArDur: 10000,
 
   PeriodTypes: [
     { ts_gte: null, ts_lte: null, label: 'All periods' },
