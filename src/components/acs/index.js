@@ -11,11 +11,11 @@ import LevelBadge from './LevelBadge'
 export function register (Vue) {
   Vue.component('ac-spn', Spn)
   Vue.component('ac-spinner', Spinner)
-  Vue.component('ac-input-date', InputDate)
   Vue.component('ac-table-tools', TableTools)
   Vue.component('ac-table-pagination', TablePagination)
   Vue.component('ac-table-total-counter', TableTotalCounter)
   Vue.component('ac-tr-no-rows', TrNoRows)
+  Vue.component('ac-input-date', InputDate)
   Vue.component('ac-input-period', InputPeriod)
   Vue.component('ac-level-badge', LevelBadge)
 }

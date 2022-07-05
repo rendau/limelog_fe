@@ -93,11 +93,13 @@ export function changeSearch (ctx, v) {
 
 export function changeTsGte (ctx, v) {
   ctx.commit('setTsGte', v)
+  ctx.commit('setPeriodType', null)
   ctx.dispatch('list', { restart: true })
 }
 
 export function changeTsLte (ctx, v) {
   ctx.commit('setTsLte', v)
+  ctx.commit('setPeriodType', null)
   ctx.dispatch('list', { restart: true })
 }
 

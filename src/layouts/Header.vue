@@ -23,6 +23,12 @@
             <PeriodFilter/>
           </div>
 
+          <div>
+            <ac-input-period :ts-gte="$store.state.log.ts_gte" :ts-lte="$store.state.log.ts_lte"
+                             @update:ts-gte="$store.dispatch('log/changeTsGte', $event)"
+                             @update:ts-lte="$store.dispatch('log/changeTsLte', $event)"/>
+          </div>
+
           <q-space/>
 
           <div>
