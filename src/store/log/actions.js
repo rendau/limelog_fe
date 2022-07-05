@@ -8,6 +8,9 @@ let arTimeoutId = null
 
 export function list (ctx, pars = {}) {
   clearTimeout(arTimeoutId)
+  if (!ctx.state.ts_lte) {
+    ctx.commit('setArDur', _.find(cns.RefreshRates, x => _.isNil(x.value)) || null)
+  }
   if (!ctx.rootState.profile.ctx) {
     return
   }
@@ -27,7 +30,7 @@ export function list (ctx, pars = {}) {
   // search
   if (ctx.state.search) {
     let conds = _.map(_.reject(_.split(ctx.state.search, ' && '), x => !x), x => {
-      return { [cns.SfMessageFieldName]: { '$regex': x, '$options': 'i' } }
+      return { [cns.SfMessageFieldName]: { '$regex': _.replace(x, '"', '\\\"'), '$options': 'i' } }
     })
     if (conds.length > 0) {
       filter_obj['$and'] = conds
