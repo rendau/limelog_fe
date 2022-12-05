@@ -32,12 +32,12 @@ const cns = {
   DefaultArDur: 10000,
 
   PeriodTypes: [
-    { ts_gte: null, ts_lte: null, label: 'All periods' },
+    { ts_gte: null, ts_lte: null, label: 'All periods', default: true },
     { ts_gte: moment().add(-30, 'minute').valueOf(), ts_lte: null, label: '30 min' },
     { ts_gte: moment().add(-2, 'hour').valueOf(), ts_lte: null, label: '2 hour' },
     { ts_gte: moment().add(-1, 'day').valueOf(), ts_lte: null, label: '1 day' },
     { ts_gte: moment().add(-3, 'day').valueOf(), ts_lte: null, label: '3 days' },
-    { ts_gte: moment().add(-7, 'day').valueOf(), ts_lte: null, label: '7 days', default: true },
+    { ts_gte: moment().add(-7, 'day').valueOf(), ts_lte: null, label: '7 days' },
     { ts_gte: moment().add(-15, 'day').valueOf(), ts_lte: null, label: '15 days' },
     { ts_gte: moment().add(-1, 'month').valueOf(), ts_lte: null, label: '1 month' },
     { ts_gte: moment().add(-3, 'month').valueOf(), ts_lte: null, label: '3 month' },
